@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model comments {
+  comment_id   Int       @id @default(autoincrement())
+  user_id      Int?
+  room_id      Int?
+  comment_date DateTime? @default(now()) @db.DateTime(0)
+  content      String?   @db.Text
+  star         Int?
+  rooms        rooms?    @relation(fields: [room_id], references: [room_id], onDelete: NoAction, onUpdate: NoAction, map: "comments_ibfk_1")
+  users        users?    @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "comments_ibfk_2")
+
+  @@index([room_id], map: "room_id")
+  @@index([user_id], map: "user_id")
+}
+
+model location {
+  location_id   Int     @id @default(autoincrement())
+  location_name String? @db.VarChar(255)
+  province      String? @db.VarChar(255)
+  country       String? @db.VarChar(255)
+  image         Bytes?  @db.Blob
+  rooms         rooms[]
+}
+
+model reserve {
+  reserve_id   Int       @id @default(autoincrement())
+  room_id      Int?
+  date_in      DateTime? @db.DateTime(0)
+  date_out     DateTime? @db.DateTime(0)
+  guest_amount Int?
+  user_id      Int?
+  rooms        rooms?    @relation(fields: [room_id], references: [room_id], onDelete: NoAction, onUpdate: NoAction, map: "reserve_ibfk_1")
+  users        users?    @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "reserve_ibfk_2")
+
+  @@index([room_id], map: "room_id")
+  @@index([user_id], map: "user_id")
+}
+
+model room_image {
+  image_id   Int     @id @default(autoincrement())
+  room_id    Int?
+  image_path String? @db.LongText
+  rooms      rooms?  @relation(fields: [room_id], references: [room_id], onDelete: NoAction, onUpdate: NoAction, map: "room_image_ibfk_1")
+
+  @@index([room_id], map: "room_id")
+}
+
+model rooms {
+  room_id       Int          @id @default(autoincrement())
+  room_name     String?      @db.VarChar(255)
+  guest         Int?
+  bedroom       Int?
+  bed           Int?
+  bathroom      Int?
+  description   String?      @db.LongText
+  price         Int?
+  washer        Boolean?     @default(false)
+  iron          Boolean?     @default(false)
+  tv            Boolean?     @default(false)
+  air_condition Boolean?     @default(false)
+  wifi          Boolean?     @default(false)
+  kitchen       Boolean?     @default(false)
+  parking_lot   Boolean?     @default(false)
+  pool          Boolean?     @default(false)
+  location_id   Int?
+  comments      comments[]
+  reserve       reserve[]
+  room_image    room_image[]
+  location      location?    @relation(fields: [location_id], references: [location_id], onDelete: NoAction, onUpdate: NoAction, map: "rooms_ibfk_1")
+
+  @@index([guest], map: "guest")
+  @@index([location_id], map: "location_id")
+}
+
+model users {
+  user_id    Int          @id @default(autoincrement())
+  name       String?      @db.VarChar(255)
+  email      String?      @db.VarChar(255)
+  password   String?      @db.VarChar(255)
+  phone      String?      @db.VarChar(20)
+  birthday   String?      @db.VarChar(255)
+  gender     String?      @db.VarChar(20)
+  role       String?      @default("user") @db.VarChar(100)
+  comments   comments[]
+  reserve    reserve[]
+  user_image user_image[]
+}
+
+model user_image {
+  image_id   Int     @id @default(autoincrement())
+  user_id    Int?
+  image_path String? @db.LongText
+  users      users?  @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_image_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
