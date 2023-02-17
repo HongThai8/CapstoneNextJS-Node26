@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller,Get, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOAuth2, ApiTags } from '@nestjs/swagger';

@@ -1,35 +1,34 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
+export class Comment {
+  @ApiProperty({ description: 'comment_id', type: 'number' })
+  comment_id: number;
 
-export class Comment{
-    @ApiProperty({description:"comment_id",type:"number"})
-    comment_id: number;
+  @ApiProperty({ description: 'user_id', type: 'number' })
+  user_id: number;
 
-    @ApiProperty({description:"user_id",type:"number"})
-    user_id:number;
+  @ApiProperty({ description: 'room_id', type: 'number' })
+  room_id: number;
 
-    @ApiProperty({description:"room_id",type:"number"})
-    room_id:number;
+  @ApiProperty({ description: 'comment_date', type: 'string' })
+  comment_date: Date;
 
-    @ApiProperty({description:"comment_date",type:"string"})
-    comment_date:Date;
+  @ApiProperty({ description: 'star', type: 'number' })
+  star: number;
 
-    @ApiProperty({description:"star",type:"number"})
-    star:number;
-
-    @ApiProperty({description:"content",type:"string"})
-    content:string;
+  @ApiProperty({ description: 'content', type: 'string' })
+  content: string;
 }
 
-export class UpdateCommentDto{
-    @ApiProperty({description:"star",type:"number"})
-    star:number;
+export class UpdateCommentDto {
+  @ApiProperty({ description: 'star', type: 'number' })
+  star: number;
 
-    @ApiProperty({description:"content",type:"string"})
-    content:string;
+  @ApiProperty({ description: 'content', type: 'string' })
+  content: string;
 }
 
 export class CommentResultDto {
-    status:boolean
-    data:any
+  status: boolean;
+  data: any;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { comments, PrismaClient } from '@prisma/client';
@@ -29,7 +30,7 @@ export class CommentService {
 
     async updateComments(comment_id:string,comment:UpdateCommentDto):Promise<CommentResultDto>{
         try {
-            let res =await this.prisma.comments.update({ 
+            const res =await this.prisma.comments.update({ 
                 data:{
                     content:comment.content,
                     star:comment.star,
@@ -54,7 +55,7 @@ export class CommentService {
 
     async deleteComments(comment_id:string):Promise<CommentResultDto>{
         try {
-            let res =await this.prisma.comments.delete({ 
+            const res =await this.prisma.comments.delete({ 
                 where:{
                     comment_id:parseInt(comment_id)
                 }
@@ -73,7 +74,7 @@ export class CommentService {
     }
     async getCommentByRoomID(room_id:string):Promise<comments[]>{
         try {
-            let res =await this.prisma.comments.findMany({ 
+            const res =await this.prisma.comments.findMany({ 
                 where:{
                     room_id:parseInt(room_id)
                 }

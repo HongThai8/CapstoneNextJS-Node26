@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { location, PrismaClient } from '@prisma/client';
 import { Location, LocationResultDto, LocationUpdateDto } from './dto';
@@ -52,7 +53,7 @@ export class LocationService {
 
     async deleteLocationByID(location_id: string):Promise<LocationResultDto>{
         try {
-            let res =await this.prisma.location.delete({
+            const res =await this.prisma.location.delete({
                 where:{
                     location_id:parseInt(location_id)
                 }

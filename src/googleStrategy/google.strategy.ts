@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, VerifyCallback } from 'passport-google-oauth20';
 import { config } from 'dotenv';

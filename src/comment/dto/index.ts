@@ -1,1 +1,2 @@
-export * from "./comment.dto";
+/* eslint-disable prettier/prettier */
+export * from './comment.dto';

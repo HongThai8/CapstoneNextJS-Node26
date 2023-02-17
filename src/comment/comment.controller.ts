@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Delete, Post, Put, Body, Param } from '@nestjs/common';
 import { CommentService } from './comment.service';
 import { ApiTags } from '@nestjs/swagger/dist';

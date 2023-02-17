@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { MailerModule } from '@nestjs-modules/mailer';
 import { Global, Module } from '@nestjs/common';
 import { join } from 'path';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { PrismaClient, users } from '@prisma/client';
 import { User, UserResultDto } from './dto/user.dto';
@@ -16,7 +17,7 @@ export class UserService {
     }
 
     async createUser(user:User): Promise<users> {
-        let passWordHash = bcrypt.hashSync(user.password, 10);
+        const passWordHash = bcrypt.hashSync(user.password, 10);
         return await this.prisma.users.create({
             data:{
                 email: user.email,
@@ -32,7 +33,7 @@ export class UserService {
 
     async deleteUser(user_id: string):Promise<UserResultDto>{
         try {
-            let res =await this.prisma.users.delete({
+            const res =await this.prisma.users.delete({
                 where:{
                    user_id:parseInt(user_id)
                 }
@@ -115,7 +116,7 @@ export class UserService {
         fs.readFile(process.cwd() + "/public/img/" + file.filename, async (err, data) => {
 
 
-            let image_path = `data:${file.mimetype};base64,${Buffer.from(data).toString("base64")}`;
+            const image_path = `data:${file.mimetype};base64,${Buffer.from(data).toString("base64")}`;
 
 
             await this.prisma.user_image.create({
