@@ -1,11 +1,11 @@
-# Capstone React Typescript Cuối Khóa
+# Capstone React NodeJS Cuối Khóa
 
-Lớp: BC34 
+Lớp: NodeJS26 
  Họ tên
-- Hồng Thái : Đăng ký , đăng nhập , chỉnh sửa thông tin cá nhân , lấy danh sách , tìm kiếm , chi tiết khóa học 
-- Minh Tâm :  Đăng ký khóa học , Quản lý người dùng , Quản lý khóa học , Ghi danh người dùng
+- Hồng Thái : Người dùng , Phòng , Đặt phòng , Vị trí , Bình luận 
+- Thanh Nhân : X
 
 ## Link
-- Git:https://github.com/HongThai8/BC34-CapstoneTs-HongThai
-- Youtube: https://youtu.be/rYgmKJxsq_g
-- Deploy: https://bc-34-capstone-ts-hong-thai.vercel.app/
+- Git: https://github.com/HongThai8/CapstoneNextJS-Node26
+- Youtube: https://youtu.be/ipBFoIbwqEs
+- Deploy: https://capstonenextjs-node26-production.up.railway.app/
